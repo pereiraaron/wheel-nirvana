@@ -2,7 +2,7 @@
 
 import { CustomFilterProps } from "@/types";
 import { updateSearchParams } from "@/utils";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import Image from "next/image";
@@ -13,8 +13,7 @@ const CustomFilter: React.FC<CustomFilterProps> = ({ title, options }) => {
 
   const handleUpdateParams = (e: { title: string; value: string }) => {
     const newPathName = updateSearchParams(title, e.value.toLowerCase());
-
-    router.push(newPathName);
+    router.push(newPathName, { scroll: false });
   };
 
   return (
